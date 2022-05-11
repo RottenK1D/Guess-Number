@@ -1,0 +1,30 @@
+body {
+    background-color: #cad2c5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+  }  
+
+#section-container{
+  padding-top: 20px;
+  display: flex;
+  min-width: 600px;
+  height: 500px;
+  border: solid;
+  box-shadow: 5px 5px 10px 1px #2f3e46;
+  justify-content: center;
+}
+
+
+h1{
+  color: #2f3e46;
+  font-size: 50px;
+  font-family: 'Water Brush', cursive;
+}
+
+
+.my-element{
+  display: inline-block;
+  margin: 0 0.5rem;
+}
