@@ -18,12 +18,25 @@
             Let's see if you got what it takes!</p>
 
         <div class="form">
-            <input class="guess-input" type="text" placeholder="Enter your number">
-            <input class="guess-submit" type="submit">
+            <input id="input-guess" class="guess-input" type="text" placeholder="Enter your number">
+            <input class="guess-submit" type="submit" onclick="getUserGuess()">
+        </div>
+
+        <div class="result-field">
+            <p id="user-guesses"></p>
+            <p id="result"></p>
+            <p id="hint"></p>
         </div>
     </div>
 
     <script>
+
+        let randomNumber = Math.floor(Math.random() * 100) + 1;
+        
+        let getUserGuess = () =>{
+            let guessInput = document.getElementById('input-guess').value;
+            document.getElementById('user-guesses').innerHTML = guessInput;
+        }
         
     </script>
 </body>
