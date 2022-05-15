@@ -40,9 +40,10 @@
         const guesses = document.getElementById('guesses');
         const result = document.getElementById('result');
         const hint = document.getElementById('hint');
+        let img = document.querySelector('img');
 
         submitGuess.addEventListener('click' , () =>{
-
+            
             if(guessCount >= 1){
 
                 const guess = Number(userGuess.value);
@@ -72,6 +73,18 @@
                 }
             }
         })
+
+        submitGuess.addEventListener('click', () =>{
+            img.src = '/img/Winning-Cat.png';
+            
+        })
+
+        function resetAnimation (img){
+            img.style.animation = 'none';
+            img.offsetHeight; /* trigger reflow */
+            img.style.animation = null; 
+        }
+
     </script>
 </body>
 </html>
