@@ -60,13 +60,23 @@
                
                 }else if (guess !== randomNumber){
                     result.textContent = 'Wrong guess!';
-                    if(((randomNumber - guess) <= 10) && ((randomNumber - guess) >= - 10)){ 
-                        hint.textContent = 'Close'
+
+                    if(((randomNumber - guess) <= 20) && ((randomNumber - guess) >= - 20)){
+                        hint.textContent = 'You are close';
+
+                        if(((randomNumber - guess) <= 10) && ((randomNumber - guess) >= - 10)){
+                            hint.textContent = 'You are very close';
+
+                            if(((randomNumber - guess) <= 5) && ((randomNumber - guess) >= - 5)){
+                                hint.textContent = 'You are super close';
+                            }
+                        }
                     }else{
-                        hint.textContent = 'Far'
+                        hint.textContent = 'You are far';
                     }
-                    
-                }
+
+                }  
+                
                 guessCount -= 1;
             }
             if (guessCount === 0){
