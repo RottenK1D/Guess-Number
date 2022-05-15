@@ -17,7 +17,6 @@ body {
   border: solid #2f3e46;
   border-radius: 6px;
   box-shadow: 5px 5px 10px 1px #2f3e46;
-  flex-grow: 0;
   color: #2f3e46;
 }
 
@@ -79,4 +78,16 @@ p{
 }
 input[type=text]:focus {
   border: 3px solid #2f3e46;
+}
+
+#guesses{
+  font-size: 20px;
+}
+
+#result{
+  margin: 0;
+}
+
+#hint{
+  margin-top: 10px;
 }
