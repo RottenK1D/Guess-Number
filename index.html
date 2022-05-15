@@ -18,12 +18,12 @@
             Let's see if you got what it takes!</p>
 
         <div class="form">
-            <input id="input-guess" class="guess-input" type="text" placeholder="Enter your number">
-            <input class="guess-submit" type="submit" onclick="getUserGuess()">
+                <input id="userGuess" class="guess-input" type="text" placeholder="Enter your number" >
+                <input id="submitGuess" class="guess-submit" type="submit" >
         </div>
 
         <div class="result-field">
-            <p id="user-guesses"></p>
+            <p id="guesses"></p>
             <p id="result"></p>
             <p id="hint"></p>
         </div>
@@ -32,12 +32,46 @@
     <script>
 
         let randomNumber = Math.floor(Math.random() * 100) + 1;
-        
-        let getUserGuess = () =>{
-            let guessInput = document.getElementById('input-guess').value;
-            document.getElementById('user-guesses').innerHTML = guessInput;
-        }
-        
+        console.log(randomNumber);
+        let guessCount = 10;
+
+        const userGuess = document.getElementById('userGuess');
+        const submitGuess = document.getElementById('submitGuess');
+        const guesses = document.getElementById('guesses');
+        const result = document.getElementById('result');
+        const hint = document.getElementById('hint');
+
+        submitGuess.addEventListener('click' , () =>{
+
+            if(guessCount >= 1){
+
+                const guess = Number(userGuess.value);
+                userGuess.value = '';
+                guesses.textContent += guess + " ";
+     
+                if (guess === randomNumber && guessCount >= 1){
+                    result.textContent = 'Right guess'; 
+                    guesses.textContent = '';
+                    hint.textContent = '';
+                    guessCount = 0;
+               
+                }if (guess !== randomNumber && guessCount >= 1){
+                    guessCount -= 1;
+                    result.textContent = 'Wrong guess!';
+
+                    if(((randomNumber - guess) <= 10) && ((randomNumber - guess) >= - 10)){ 
+                        hint.textContent = 'Close'
+                    }else{
+                        hint.textContent = 'Far'
+                    }
+                    
+                }if (guessCount === 0){
+                    result.textContent = 'Game over!'
+                    guesses.textContent = '';
+                    hint.textContent = '';
+                }
+            }
+        })
     </script>
 </body>
 </html>
