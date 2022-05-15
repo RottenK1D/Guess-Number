@@ -13,7 +13,7 @@
 <body>
     <div id="section-container" >
         <h1>Guess Number</h1>
-        <p>A little <img src="/img/Still-Cat.png " alt="robot-face" width="80px" height="auto" class="animate__animated__animate__pulse my-element"> picked a number from ➊ to ➊⓿⓿. 
+        <p>A little <img src="/img/Still-Cat.png " alt="robot-face" width="90px" height="70px" class="animate__animated__animate__pulse my-element"> picked a number from ➊ to ➊⓿⓿. 
             You my friend, have 10 turns to get the right guess.
             Let's see if you got what it takes!</p>
 
@@ -43,43 +43,42 @@
         let img = document.querySelector('img');
 
         submitGuess.addEventListener('click' , () =>{
-            
+        
             if(guessCount >= 1){
 
                 const guess = Number(userGuess.value);
                 userGuess.value = '';
                 guesses.textContent += guess + " ";
      
-                if (guess === randomNumber && guessCount >= 1){
+                if (guess === randomNumber){
                     result.textContent = 'Hooray!!! You got it!'; 
+                    img.src = '/img/Winning-Cat.png';
+                    resetAnimation(img);
                     guesses.textContent = '';
                     hint.textContent = '';
                     guessCount = 0;
                
-                }if (guess !== randomNumber && guessCount >= 1){
-                    guessCount -= 1;
+                }else if (guess !== randomNumber){
                     result.textContent = 'Wrong guess!';
-
                     if(((randomNumber - guess) <= 10) && ((randomNumber - guess) >= - 10)){ 
                         hint.textContent = 'Close'
                     }else{
                         hint.textContent = 'Far'
                     }
                     
-                }if (guessCount === 0){
+                }
+                guessCount -= 1;
+            }
+            if (guessCount === 0){
                     result.textContent = "Game over! Kitty's number was: " + randomNumber;
                     guesses.textContent = '';
                     hint.textContent = '';
-                }
-            }
+                    img.src = '/img/Lost-Cat.png';
+                    resetAnimation(img);
+                }   
         })
 
-        submitGuess.addEventListener('click', () =>{
-            img.src = '/img/Winning-Cat.png';
-            
-        })
-
-        function resetAnimation (img){
+        function resetAnimation (img){ // reset img animation
             img.style.animation = 'none';
             img.offsetHeight; /* trigger reflow */
             img.style.animation = null; 
